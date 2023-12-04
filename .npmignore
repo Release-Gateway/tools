@@ -1,0 +1,27 @@
+
+# Exclude typescript source and config
+*.ts
+tsconfig.json
+*.tsbuildinfo
+
+# Include javascript files and typescript declarations
+!*.js
+!*.d.ts
+
+# Exclude jsii outdir
+src
+
+# Include .jsii and .jsii.gz
+!.jsii
+!.jsii.gz
+
+.prettierrc
+logo.png
+jest.config.js
+stryker.config.json
+examples
+coverage
+.github
+.jsii
+CODE_OF_CONDUCT.md
+.ideo

@@ -1,0 +1,86 @@
+{
+  "name": "@release-gateway/tools",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "mutation-test": "npx stryker run",
+    "prebuild": "rm -rf ./dist",
+    "build": "tsc",
+    "postbuild": "cp ./README.md ./dist/README.md",
+    "lint": "eslint --ext .ts .",
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Release-Gateway/tools.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "author": "Christopher Imrie",
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "typescript",
+    "release-gateway"
+  ],
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.2.3",
+    "@stryker-mutator/core": "^7.3.0",
+    "@stryker-mutator/jest-runner": "^7.3.0",
+    "@tsconfig/recommended": "^1.0.3",
+    "@types/jest": "^29.5.10",
+    "@types/node": "^20.10.3",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "prettier": "^3.1.0",
+    "prettier-2": "npm:prettier@^2",
+    "semantic-release": "^22.0.8",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.2.2"
+  },
+  "release": {
+    "branches": [
+      "main",
+      {
+        "name": "alpha",
+        "prerelease": true
+      }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "dist",
+          "tarballDir": "npm"
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "assets": [
+            {
+              "path": "npm/*.tgz",
+              "label": "NPM Package"
+            }
+          ]
+        }
+      ]
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/Release-Gateway/tools/issues"
+  },
+  "stability": "stable",
+  "homepage": "https://github.com/Release-Gateway/tools#readme"
+}
