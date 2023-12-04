@@ -2,7 +2,7 @@
   "name": "@release-gateway/tools",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "jest",
     "mutation-test": "npx stryker run",
